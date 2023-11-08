@@ -27,6 +27,8 @@ extension Festival: Decodable {
         let allArtists = try container.decode([Artist].self)
         id = UUID()
         date = allArtists[0].date
-        artists = allArtists
+        artists = allArtists.sorted(by: { a, b in
+            a.date < b.date
+        })
     }
 }
